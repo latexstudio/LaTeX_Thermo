@@ -1,0 +1,280 @@
+\documentclass[UTF8, sub2section]{ctexbook}
+%Public TODO
+%TODO_PUB：脚注每页重新编号，脚注段落缩进
+
+%%页面格式
+%\usepackage{geometry}
+%\geometry{a4paper, twoside, left = 2.54 cm, right = 2.54 cm, top = 3.18 cm, bottom = 3.18 cm}
+%
+%\usepackage{titlesec}
+%%	\newcommand{\sectionbreak}{\clearpage}
+
+%%交叉引用、超链接、PDF书签
+%\usepackage[hyperfootnotes=false]{hyperref}
+%\hypersetup{
+%	pdfborder = 0 0 0
+%}%TODO：PDF书签有公式会报错
+
+%脚注
+\usepackage[stable, perpage]{footmisc}
+\usepackage{pifont}
+\renewcommand{\thefootnote}{\ding{\numexpr171+\value{footnote}}}
+
+%数学支持
+\usepackage{amsmath}
+\numberwithin{equation}{chapter} %公式编号样式x.x
+\usepackage{mathtools}
+\usepackage[adobe-garamond]{mathdesign}
+%\usepackage[urw-garamond]{mathdesign} %免费字体
+\usepackage[ntheorem]{empheq}
+\usepackage{bm}
+%\usepackage{pifont} %已在“脚注”中调用
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
+%中文支持
+\usepackage{xeCJK}
+\setCJKmainfont{华文宋体}
+\setCJKfamilyfont{中宋}{华文中宋}
+\setCJKfamilyfont{楷体}{华文楷体}
+\setCJKfamilyfont{黑体}{华文黑体}
+\setCJKfamilyfont{仿宋}{华文仿宋}
+%	\setCJKfamilyfont{等线}{等线}
+\newcommand{\myBold}{\fontspec{Myriad Pro} \CJKfamily{黑体}}
+\newcommand{\myItalic}{\itshape \CJKfamily{楷体}}
+%	\xeCJKsetup{PunctStyle = quanjiao}
+%\usepackage{ctex} %已经使用了ctexart文档类
+\pagestyle{plain}
+\setcounter{secnumdepth}{4}
+\ctexset{
+	part = {
+		format = {\CJKfamily{中宋} \zihao{1} \centering},
+		name = {第, 篇}
+	},
+	chapter = {
+		format = {\fontspec{Times New Roman} \CJKfamily{中宋} \zihao{3} \raggedright},
+	},
+	section = {
+		format = {\fontspec{Times New Roman} \CJKfamily{中宋} \zihao{4} \centering},
+	},
+	subsection = {
+		format = {\fontspec{Times New Roman} \CJKfamily{中宋}},
+		name = {,、\hspace{-1 em}},
+		numbering = true,
+		number = \chinese{subsection},
+	}
+	%		paragraph = {
+	%			format = {\fontspec{Times New Roman} \CJKfamily{中宋}},
+	%			name = {,.},
+	%			number = \arabic{paragraph},
+	%		}
+	%		figurename = {\CJKfamily{楷体}  图}
+}
+
+%符号支持
+%\usepackage{gensymb}
+
+%单位
+\usepackage{siunitx}
+\sisetup{
+	number-math-rm = \ensuremath,
+	inter-unit-product = \ensuremath{{}\cdot{}},
+	group-digits = integer,
+	group-minimum-digits = 4,
+	group-separator = \text{~}
+}
+
+%%枚举
+%\usepackage{enumitem}
+%\SetLabelAlign{leftalignwithindent}{\hspace{2.1 em} \makebox[1.6 em][l]{#1}}
+%
+%%定理类环境
+%\usepackage[thmmarks, amsmath]{ntheorem}
+%\theoremstyle{empty}
+%\theoremheaderfont{\myBold}
+%\theorembodyfont{\CJKfamily{楷体}}
+%%	\theoremindent \parindent
+%\newtheorem{_myThm}{}
+%
+%\theoremstyle{plain}
+%\theoremheaderfont{\myBold}
+%\theorembodyfont{\normalfont}
+%%	\theoremsymbol{\ensuremath{\blacksquare}}
+%\newtheorem{myExample}{例}[chapter]
+
+%图表
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\usepackage{asymptote}
+\begin{asydef}
+	usepackage("amsmath");
+	usepackage("mathtools");
+	usepackage("mathdesign", "adobe-garamond");
+	usepackage("bm");
+	usepackage("ctexsize", "10pt");
+	usepackage("xeCJK");
+	texpreamble("\setCJKmainfont{华文宋体}");
+	texpreamble("\setmainfont{AGaramondPro-Regular.otf}");
+	usepackage("siunitx");
+	texpreamble("\sisetup{
+		number-math-rm = \ensuremath,
+		inter-unit-product = \ensuremath{{}\cdot{}},
+		group-digits = integer,
+		group-minimum-digits = 4,
+		group-separator = \text{~}
+	}");
+	texpreamble("\input{Symbols.tex}");
+	texpreamble("\newcommand{\emphA}[1]{{\myBold #1}}");
+	texpreamble("\newcommand{\emphB}[1]{{\myItalic #1}}");
+	texpreamble("");
+	
+	size(6 cm);
+	
+	defaultpen(fontsize(9 pt));
+	
+	pen color1 = rgb(0.368417, 0.506779, 0.709798);
+	pen color2 = rgb(0.880722, 0.611041, 0.142051);
+	pen color3 = rgb(0.560181, 0.691569, 0.194885);
+	pen color4 = rgb(0.922526, 0.385626, 0.209179);
+	pen color5 = rgb(0.647624, 0.378160, 0.614037);
+	pen color6 = rgb(0.772079, 0.431554, 0.102387);
+	pen color7 = rgb(0.363898, 0.618501, 0.782349);
+	pen color8 = rgb(0.972829, 0.621644, 0.073362);
+\end{asydef}
+%\usepackage{caption}
+%\DeclareCaptionFont{myCationFont}{\CJKfamily{楷体} \zihao{-5}}
+%\captionsetup[figure]{
+%	font = myCationFont,
+%	labelsep = quad,
+%	skip = 20pt
+%}
+%\captionsetup[table]{
+%	font = myCationFont,
+%	labelsep = quad,
+%	skip = 20pt
+%}
+\usepackage{graphicx}
+%\usepackage{tabularx}
+%\usepackage{booktabs}
+%\usepackage{floatrow}
+
+%TODO——自定义环境
+%自定义定理（定律）
+\newenvironment{myThm}[1]
+{\begin{_myThm}[\hskip 2 em #1]}
+	{\end{_myThm}}
+%	{\begin{quote} \begin{_myThm}}
+%	{\end{_myThm} \end{quote}}
+%自定义证明（说明）
+\newenvironment{myProof}
+{\vspace{6 pt} \zihao{-5} \CJKfamily{仿宋}}
+{\vspace{6 pt}}
+%自定义列表
+\newenvironment{myEnum1}
+{\begin{enumerate} [label = \alph*), align = leftalignwithindent, leftmargin = 0 pt, itemsep = 10 pt, parsep = 0 pt, listparindent = 2 em]}
+	{\end{enumerate}}
+\newenvironment{myEnum2}
+{\begin{enumerate} [label = (\Roman*), align = leftalignwithindent, leftmargin = 2 em, topsep = 0pt, itemsep = 0 pt, parsep = 0 pt, listparindent = 2 em]}
+	{\end{enumerate}}
+%带框公式
+\newenvironment{boxedEq}
+{\empheq[box = \fbox]{equation}}
+{\endempheq}
+%子公式
+\newenvironment{mySubEq}
+{\begin{subequations} \renewcommand{\theequation}{\theparentequation-\alph{equation}}}
+	{\end{subequations}
+	\ignorespacesafterend}
+
+%TODO——自定义命令
+\input{Symbols.tex}
+
+%强调
+\newcommand{\emphA}[1]{{\myBold #1}}
+\newcommand{\emphB}[1]{{\myItalic #1}}
+
+%引入文件
+\let \oldInclude = \include
+\renewcommand{\include}[1]{{\let \clearpage = \relax \oldInclude{#1}}}
+%空行
+\newcommand{\blankline}{\mbox{}}
+%自定义列表项目（不可删除换行！）
+\newcommand{\myItem}[1]{
+	\item
+	{\fontspec{Times New Roman} \CJKfamily{中宋} #1}
+	
+	
+}
+%%引入图片
+%\newcommand{\myFig}[3]{
+%		\floatbox[{\capbeside \thisfloatsetup{capbesideposition = {right, bottom}, capbesidewidth = 3.5 cm}}]{figure}[\FBwidth]
+%		{\asyinput{#1}}
+%		{\caption{#2} \label{#3}}
+%}
+
+
+\title{
+	\vspace{-4 cm}
+	\fontspec{Times New Roman}
+	\CJKfamily{中宋}
+	热力学与统计物理I
+}
+\author{
+	\CJKfamily{楷体}
+	复旦大学\phantom{空格}陈焱
+}
+\date{
+	\CJKfamily{楷体}
+	\today
+}
+
+\begin{document}
+	\begin{figure}
+		\begin{asy}
+		import graph;
+		pair O = (0, 0), x_axes = (10, 0), y_axes = (0, 10);
+		draw(Label("$V$", EndPoint), O--x_axes, Arrow);
+		draw(Label("$p$", EndPoint), O--y_axes, Arrow);
+		
+		real gamma = 2.5;
+		real x1 = 2, x4 = 9;
+		real c1 = 10, c2 = 18;
+		real c3 = c2*x1^(gamma-1), c4 = c1*x4^(gamma-1);
+		real x2 = x1*(c1/c2)^(1/(1-gamma)), x3 = x4*(c2/c1)^(1/(1-gamma));
+		
+		path path1 = graph(new real(real x) {return c2/x;}, x1, x3);
+		path path2 = graph(new real(real x) {return c4/x^gamma;}, x3, x4);
+		path path3 = reverse(graph(new real(real x) {return c1/x;}, x2, x4));
+		path path4 = reverse(graph(new real(real x) {return c3/x^gamma;}, x1, x2));
+		//path path_TH = graph(new real(real x) {return c2/x;}, x3, 8);
+		//path path_TC = graph(new real(real x) {return c1/x;}, 1.7, x2);
+		
+		pair p1 = (x1, c2/x1), p2 = (x3, c2/x3), p3 = (x4, c1/x4), p4 = (x2, c1/x2);
+		
+		pen pen1 = linewidth(1)+color1;
+		
+		fill(path1 & path2 & path3 & path4 & cycle, color1+opacity(0.2));
+		
+		//draw(path_TH, dashed + color1);
+		//draw(path_TC, dashed + color1);
+		draw(path1, pen1, Arrow(position = Relative(0.7), arrowhead = HookHead, size = 4));
+		draw(path2, pen1, Arrow(position = Relative(0.5), arrowhead = HookHead, size = 4));
+		draw(path3, pen1, Arrow(position = Relative(0.7), arrowhead = HookHead, size = 4));
+		draw(path4, pen1, Arrow(position = Relative(0.45), arrowhead = HookHead, size = 4));
+		
+		draw(Label("$V_1$", EndPoint, black), p1--(p1.x, 0), dashed + color1);
+		draw(Label("$V_2$", EndPoint, black), p2--(p2.x, 0), dashed + color1);
+		draw(Label("$V_3$", EndPoint, black), p3--(p3.x, 0), dashed + color1);
+		draw(Label("$V_4$", EndPoint, black), p4--(p4.x, 0), dashed + color1);
+		
+		label("状态1", p1, N);
+		label("状态2", p2, NE);
+		label("状态3", p3, E);
+		label("状态4", p4, SW, Fill(white));
+		
+		label("I", path1, align = Relative(W));
+		label("II", path2, align = Relative(W));
+		label("III", path3, align = Relative(W));
+		label("IV", path4, align = Relative(W), Fill(white));
+		\end{asy}
+	\end{figure}
+\end{document}
