@@ -54,49 +54,35 @@
 %中文支持
 \usepackage{xeCJK}
 	\xeCJKsetup{
-		%		PunctStyle = quanjiao,
+%		PunctStyle = quanjiao,
 		AutoFakeBold = false,
 		AutoFakeSlant = false
 	}
-	\setCJKmainfont{华文宋体}
+	\setCJKmainfont[BoldFont = 华文中宋, ItalicFont = 华文楷体]{华文宋体}
 	\setCJKfamilyfont{中宋}{华文中宋}
 	\setCJKfamilyfont{楷体}{华文楷体}
 	\setCJKfamilyfont{仿宋}{华文仿宋}
-%	\setCJKfamilyfont{黑体}{华文细黑}
-%	\newcommand{\myHeavy}{\fontspec{Segoe UI Semilight} \CJKfamily{黑体}}
 	\setCJKfamilyfont{黑体}{华文黑体}
 	\newcommand{\myHeavy}{\fontspec{MyriadPro-Regular} \CJKfamily{黑体}}
-	\newcommand{\myBold}{\bfseries \CJKfamily{中宋}}
-	\newcommand{\myItalic}{\itshape \CJKfamily{楷体}}
 %\usepackage{ctex} %已经使用了ctexbook文档类
 	\setcounter{secnumdepth}{4}
-	%\small = \zihao{5}
-	%\normalsize = \zihao{-4}
-	%\renewcommand{\large}{\zihao{4}}
-	%\Large = \zihao{-2}
 	\ctexset{
 		part = {
-			format = {\myBold \Huge \centering},
+			format = {\bfseries \Huge \centering},
 			name = {第, 篇}
 		},
 		chapter = {
-			format = {\myBold \LARGE \raggedright},
+			format = {\bfseries \LARGE \raggedright},
 		},
 		section = {
-			format = {\myBold \Large \centering},
+			format = {\bfseries \Large \centering},
 		},
 		subsection = {
-			format = {\myBold},
+			format = {\bfseries},
 			name = {,、\hspace{-1 em}},
 			numbering = true,
 			number = \chinese{subsection},
 		}
-%		paragraph = {
-%			format = {\myBold},
-%			name = {,.},
-%			number = \arabic{paragraph},
-%		}
-%		figurename = {\CJKfamily{楷体}  图}
 	}
 
 %符号支持
@@ -152,7 +138,7 @@
 		usepackage("mathdesign", "adobe-garamond");
 		usepackage("bm");
 		usepackage("xeCJK");
-			texpreamble("\setCJKmainfont{华文宋体}");
+			texpreamble("\setCJKmainfont[BoldFont = 华文中宋, ItalicFont = 华文楷体]{华文宋体}");
 			texpreamble("\setmainfont{AGaramondPro-Regular.otf}");
 		usepackage("siunitx");
 			texpreamble("\sisetup{
@@ -164,7 +150,7 @@
 			}");
 		texpreamble("\input{Symbols.tex}");
 		texpreamble("\newcommand{\emphA}[1]{{\myHeavy #1}}");
-		texpreamble("\newcommand{\emphB}[1]{{\myItalic #1}}");
+		texpreamble("\newcommand{\emphB}[1]{{\itshape #1}}");
 		
 		size(6 cm);
 		
@@ -245,23 +231,17 @@
 
 %强调
 \newcommand{\emphA}[1]{{\myHeavy #1}}
-\newcommand{\emphB}[1]{{\myItalic #1}}
+\newcommand{\emphB}[1]{{\itshape #1}}
 
 %引入文件
 \let \oldInclude = \include
 \renewcommand{\include}[1]{{\let \clearpage = \relax \oldInclude{#1}}}
-%%引入图片
-%\newcommand{\myFig}[3]{
-%		\floatbox[{\capbeside \thisfloatsetup{capbesideposition = {right, bottom}, capbesidewidth = 3.5 cm}}]{figure}[\FBwidth]
-%		{\asyinput{#1}}
-%		{\caption{#2} \label{#3}}
-%}
 %空行
 \newcommand{\blankline}{\mbox{}}
 %自定义列表项目（不可删除换行！）
 \newcommand{\myItem}[1]{
 	\item
-	{\myBold #1}
+	{\bfseries #1}
 	
 	
 }
@@ -275,7 +255,7 @@
 
 \title{
 	\vspace{-4 cm}
-	\myBold
+	\bfseries
 	热力学与统计物理I
 }
 \author{

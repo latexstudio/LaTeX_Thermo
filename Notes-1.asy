@@ -13,7 +13,7 @@ usepackage("mathtools");
 usepackage("mathdesign", "adobe-garamond");
 usepackage("bm");
 usepackage("xeCJK");
-texpreamble("\setCJKmainfont{华文宋体}");
+texpreamble("\setCJKmainfont[BoldFont = 华文中宋, ItalicFont = 华文楷体]{华文宋体}");
 texpreamble("\setmainfont{AGaramondPro-Regular.otf}");
 usepackage("siunitx");
 texpreamble("\sisetup{
@@ -25,7 +25,7 @@ group-separator = \text{~}
 }");
 texpreamble("\input{Symbols.tex}");
 texpreamble("\newcommand{\emphA}[1]{{\myHeavy #1}}");
-texpreamble("\newcommand{\emphB}[1]{{\myItalic #1}}");
+texpreamble("\newcommand{\emphB}[1]{{\itshape #1}}");
 
 size(6 cm);
 
