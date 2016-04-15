@@ -52,17 +52,17 @@
 	\newcommand{\xmark}{\ding{55}}
 
 %中文支持
-\usepackage{xeCJK}
+\usepackage[]{xeCJK}
 	\xeCJKsetup{
 %		PunctStyle = quanjiao,
 		AutoFakeBold = false,
 		AutoFakeSlant = false
 	}
-	\setCJKmainfont[BoldFont = 华文中宋, ItalicFont = 华文楷体]{华文宋体}
-	\setCJKfamilyfont{中宋}{华文中宋}
-	\setCJKfamilyfont{楷体}{华文楷体}
-	\setCJKfamilyfont{仿宋}{华文仿宋}
-	\setCJKfamilyfont{黑体}{华文黑体}
+	\setCJKmainfont[BoldFont = 华文中宋, ItalicFont = 华文楷体, Mapping = fullwidth-stop]{华文宋体}
+	\setCJKfamilyfont{中宋}[Mapping = fullwidth-stop]{华文中宋}
+	\setCJKfamilyfont{楷体}[Mapping = fullwidth-stop]{华文楷体}
+	\setCJKfamilyfont{仿宋}[Mapping = fullwidth-stop]{华文仿宋}
+	\setCJKfamilyfont{黑体}[Mapping = fullwidth-stop]{华文黑体}
 	\newcommand{\myHeavy}{\fontspec{MyriadPro-Regular} \CJKfamily{黑体}}
 %\usepackage{ctex} %已经使用了ctexbook文档类
 	\setcounter{secnumdepth}{4}
@@ -289,9 +289,9 @@
 		\chapter{均匀系统的平衡特性}
 			\include{Chapters/Chapter2}
 			
-%		\chapter{相变的热力学理论}
-%			\include{Chapters/Chapter3}
-%			
+		\chapter{相变的热力学理论}
+			\include{Chapters/Chapter3}
+			
 %		\chapter{多元复相 热力学第三定律}
 %			\include{Chapters/Chapter4}
 %			
