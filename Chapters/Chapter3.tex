@@ -7,10 +7,57 @@
 	\subsection{平衡判据}
 		\begin{myEnum1}
 			\myItem{熵判据}
-				由上所述，在 $\vd U = 0, \, \vd V = 0, \, \vd N = 0$ 的前提下，$\vd S = 0, \, \vd^{\:2} \! S <0$ 即说明（孤立）体系达到了平衡。这里的“$\vd\,$”表示\emphB{虚变化}，与“$\dd\,$”代表的真实变化有所不同，它与虚功原理中的虚位移是类似的。
+				由上，在 $\vd U = 0, \, \vd V = 0, \, \vd N = 0$ 的前提下，$\vd S = 0, \, \vd^{\:2} \! S <0$ 即说明（孤立）体系达到了平衡。这里的“$\vd\,$”表示\emphB{虚变化}，与“$\dd\,$”代表的\emphB{真实变化}有所不同，它与虚功原理中的虚位移是类似的。%HACK：20160420 δS的缩进
 				
-				平衡分为三种：稳定平衡、亚稳平衡和不稳定平衡。稳定平衡对应
+				平衡分为三种：稳定平衡、亚稳平衡和不稳定平衡。如前所述，熵的极大值对应平衡态。稳定平衡对应其中\emphB{最大}的极大值，而亚稳平衡对应其他较小的极大值，即对于无限小的变动是稳定的，而对于有限的变动则是不稳定的。不稳定平衡对应极小值，虽然有 $\vd S = 0$，但却不满足 $\vd^{\:2} \! S <0$。平衡的稳定性可以用力学类比来理解。重力势能 $E_\text{p}$ 的极小值对应平衡。其最小值对应稳定平衡；但相对极小对于大的扰动是不稳定的，所以对应亚稳平衡。而极大值则对应不稳定平衡，稍有扰动就会偏离。%TODO：20160420 图片
+				
+				对于 $\vd S = 0$、$\vd^{\:2} \! S =0$ 的临界态，将 $S$ 围绕极值点Taylor作展开，可得
+				\begin{equation}
+					\tl{\incr\,} S = \vd S + \frac{1}{2!} \vd^{\:2} \! S + \frac{1}{3!} \vd^{\:3} \! S + \frac{1}{4!} \vd^{\:4} \! S + \cdots < 0 \fullstop
+				\end{equation}
+				式中的“$\tl{\incr\,}$”同样表示虚变动。由于要满足 $S \rightarrow -S$ 的对称性，因此 $\vd^{\:3} \! S = 0$。从而%TODO：20160420 三阶项为何等于零
+				\begin{equation}
+					\vd^{\:4} \! S < 0 \comma
+				\end{equation}
+				这就是临界态的平衡判据。
+				
 			\myItem{自由能判据}
+				考虑一个系统与热库（即环境）组成的复合体系，它是一个孤立系。显然，总内能
+				\begin{equation}
+					U_0 = U_\text{sys} + U_\text{res} = \const \comma
+				\end{equation}
+				总体积
+				\begin{equation}
+					V_0 = V_\text{sys} + V_\text{res} = \const
+				\end{equation}
+				设想体系发生了一个虚变动，则
+				\begin{braceEq}[gather]
+					\vd U_\text{sys} + \vd U_\text{res} = 0 \comma \\
+					\vd V_\text{sys} + \vd V_\text{res} = 0 \fullstop \label{EQ_DELTA_V_SYS+DELTA_V_RES=0}
+				\end{braceEq}
+				根据熵判据，
+				\begin{braceEq}
+					\vd S_0 &= \vd \; (S_\text{sys} + S_\text{res}) = 0 \comma \\
+					\vd^{\:2} \! S_0 &= \vd^{\:2} (S_\text{sys} + S_\text{res}) < 0 \fullstop
+				\end{braceEq}
+				根据热力学基本微分方程 \eqref{EQ_FUNDAMENTAL_EQUATION_FOR_PVT_SYSTEM} 式，可得
+				\begin{equation}
+					\vd U_\text{res} = T_\text{res} \vd S_\text{res} + p_\text{res}  \vd V_\text{res} \fullstop \footnote{
+						已经把式~\eqref{EQ_FUNDAMENTAL_EQUATION_FOR_PVT_SYSTEM} 中的微分“$\dd\,$”改成了变分“$\vd\,$”的形式。
+					}
+				\end{equation}
+				
+				在系统温度、体积均不变（即 $\vd T_\text{sys} = 0$、$\vd V_\text{sys} = 0$）的情形下，根据式~\eqref{EQ_DELTA_V_SYS+DELTA_V_RES=0} 可知 $\vd V_\text{res} = 0$。由于是平衡态，又有 $T_\text{res} = T_\text{sys}$。因此
+				
+				\begin{align}
+					\vd F_\text{sys} &= \vd \; (U_\text{sys} - T_\text{sys} S_\text{sys}) \\
+					&= \vd U_\text{sys} - T_\text{sys} \vd S_\text{sys} \\
+					&= -\vd U_\text{res} + T_\text{res} \vd S_\text{res} \\
+					&= -p_\text{res}  \vd V_\text{res} \\
+					&= -p_\text{res}  \vd V_\text{sys} = 0 \comma \\
+					\vd^{\:2} \! F_\text{sys} &= %TODO：20160420 推导过程
+				\end{align}
+				
 			\myItem{Gibbs函数判据}
 			\myItem{内能判据}
 		\end{myEnum1}
@@ -24,18 +71,97 @@
 		\end{equation}
 		而对于开放系，需引进\emphA{化学势} $\m$，其定义为
 		\begin{equation}
-			\m \eqdef \myPartial{G}{N}{T,\,p} \fullstop
+			\m \eqdef \myPartial{G}{n}{T, \, p} \fullstop \footnote{这里的$n$指物质的量，而非粒子数。定义$\m \eqdef (\pd G / \pd N)_{T,\,p}$ 当然也可以，不过我们只采用第一种定义。}
 		\end{equation}
 		因此，
 		\begin{equation}
-			\dd G = -S \dd T + V \dd p + \m \dd N \fullstop
-		\end{equation}%TODO：20160413 n还是N
-	
-\section{平衡条件；稳定性判据}
+			\dd G = -S \dd T + V \dd p + \m \dd n \fullstop
+		\end{equation}
+		利用Legendre变换，可得粒子数可变系统的热力学基本方程：
+		\begin{braceEq}
+			\dd U &= T \dd S - p \dd V + \m \dd n \comma \\
+			\dd H &= T \dd S + V \dd p + \m \dd n \comma \\
+			\dd F &= -S \dd T - p \dd V + \m \dd n \fullstop
+		\end{braceEq}
+		于是可以得出 $\m$ 的几个等价定义：
+		\begin{equation}
+			\m = \myPartial{U}{n}{S, \, V} = \myPartial{H}{n}{S, \, p} = \myPartial{F}{n}{T, \, V} = \myPartial{G}{n}{T, \, p} \fullstop
+		\end{equation}
+		
+		Gibbs函数 $G(T,\,p,\,n)$ 是广延量。因此可定义\emphA{摩尔Gibbs函数} $G_\text{m}$，使得
+		\begin{equation}
+			G(T,\,p,\,n) = n G_\text{m} (T,\,p) \fullstop
+		\end{equation}
+		因此，
+		\begin{equation}
+			\m \eqdef \myPartial{G}{n}{T, \, p} = \left[ \frac{\pd}{\pd n} (n G_\text{m}) \right]_{T, \, p} = G_\text{m} \fullstop
+		\end{equation}
+		对于 \SI{1}{\mol} 物质，有
+		\begin{equation}
+			\dd \m = \dd G_\text{m} = -S_\text{m} \dd T + V_\text{m} \dd p \fullstop
+		\end{equation}
+		
+		\blankline
+		
+		定义\emphA{巨势（grand potential）}或\emphA{巨热力学势}
+		\begin{equation} \label{EQ_DEF_OF_GRAND_POTENTIAL}
+			\Y \eqdef F -\m n = F - G = -p \dd V \comma
+		\end{equation}
+		则其微分
+		\begin{align}
+			\dd \Y &= \dd F - \dd \; (\m n) \notag \\
+			&= -S \dd T - p \dd V + \m \dd n - (\m \dd n + n \dd \mu) \notag \\
+			&= -S \dd T - p \dd V - n \dd \mu \fullstop \footnotemark
+		\end{align} \footnotetext{根据式~\eqref{EQ_DEF_OF_GRAND_POTENTIAL}，可知 $\dd \Y = -\dd \; (p V)$。实际上，
+		\begin{align*}
+			-S \dd T - p \dd V - n \dd \mu &= -S \dd T - p \dd V - n (-S_\text{m} \dd T + V_\text{m} \dd p) \\
+			&= -S \dd T - p \dd V + S \dd T - V \dd p = -\dd \; (p V) \comma
+		\end{align*}
+		这是不矛盾的。}
+		在统计物理中，巨势与巨配分函数有关。
+		
+\section{平衡条件与稳定条件}
+	\subsection{平衡条件}
+		对于一个\emphB{单元两相}（即一种组分，两种状态）的系统，其平衡条件为
+		\begin{equation}
+			\vd S = \vd S_1 + \vd S_2 = 0 \comma
+		\end{equation}
+		其中的下标“1”和“2”分别表示两个相。根据热力学基本方程，有
+		\begin{braceEq}
+			\vd S_1 &= \frac{1}{T_1} (\vd U_1 + p_1 \vd V_1 - \m_1 \vd n_1) \comma \\
+			\vd S_2 &= \frac{1}{T_2} (\vd U_2 + p_2 \vd V_2 - \m_2 \vd n_2) \fullstop
+		\end{braceEq}
+		设整个系统是孤立的，则
+		\begin{braceEq}
+			\vd U_1 + \vd U_2 &= 0 \comma \\
+			\vd V_1 + \vd V_2 &= 0 \comma \\
+			\vd n_1 + \vd n_2 &= 0 \fullstop
+		\end{braceEq}
+		因此
+		\begin{align}
+			\vd S &= \vd S_1 + \vd S_2 \notag \\
+			&= \left[ \frac{1}{T_1} (\vd U_1 + p_1 \vd V_1 - \m_1 \vd n_1) \right] + \left[ \frac{1}{T_2} (\vd U_2 + p_2 \vd V_2 - \m_2 \vd n_2) \right] \notag \\
+			&= \left[ \frac{1}{T_1} (\vd U_1 + p_1 \vd V_1 - \m_1 \vd n_1) \right] + \left[ \frac{1}{T_2} (-\vd U_2 - p_2 \vd V_2 + \m_2 \vd n_2) \right] \notag \\
+			&= \vd U_1 \left( \frac{1}{T_1} - \frac{1}{T_2} \right) + \vd V_1 \left( \frac{p_1}{T_1} - \frac{p_2}{T_2} \right) - \vd n_1 \left( \frac{\m_1}{T_1} - \frac{\m_2}{T_2} \right) = 0 \fullstop
+		\end{align}
+		由于 $U_1$、$V_1$ 和 $n_1$ 是相互独立的，所以它们的系数都应该等于零，即
+		\begin{braceEq}
+			T_1 &= T_2 \comma \quad \text{（热平衡条件）} \\
+			p_1 &= p_2 \comma \quad \text{（力学平衡条件）} \\
+			\m_1 &= \m_2 \fullstop \quad \text{（化学平衡条件）}%TODO：20160420 相变平衡条件
+		\end{braceEq}
+		若 $T$ 不等，则仍有能量流动；$p$ 不等，则两相界面可以移动；$\m$ 不等，则每一相中的粒子数仍在变化，因此都不是平衡。
+		
+	\subsection{稳定条件}
+		计算熵的二级变分：
+		\begin{align}
+			\vd^{\:2} \! S_1 = \frac{1}{2} \left( \frac{\pd^{\:2} \! S_1}{\pd U_1^2} \right) %TODO：20160420 (δS)^2还是δ^2 S
+		\end{align}
+		
 \section{单元系的复相平衡；相变分类；Ehrenfest公式}
 \section{气液相变；临界点行为}
 \section{临界指数；普适性}
 \section{Landau平均场理论}
 	
-\raggedbottom%FIXME：20160315 交叉引用、脚注每页重新计数失效，必须加上该行
+\raggedbottom%FIXME：20260325 交叉引用、脚注每页重新计数失效，必须加上该行
 \pagebreak

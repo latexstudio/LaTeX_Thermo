@@ -37,6 +37,7 @@
 \usepackage[stable, perpage]{footmisc}
 \usepackage{pifont}
 	\renewcommand{\thefootnote}{\ding{\numexpr171+\value{footnote}}}
+%\interfootnotelinepenalty = 10000
 
 %数学支持
 \usepackage{amsmath}
@@ -52,7 +53,7 @@
 	\newcommand{\xmark}{\ding{55}}
 
 %中文支持
-\usepackage[]{xeCJK}
+\usepackage{xeCJK}
 	\xeCJKsetup{
 %		PunctStyle = quanjiao,
 		AutoFakeBold = false,
@@ -296,5 +297,16 @@
 %			\include{Chapters/Chapter4}
 %			
 %	\part{统计物理}
+%		\chapter{统计物理学基本概念}
+%			\include{Chapters/Chapter5}
+		
+%		\chapter{统计}
+%			\include{Chapters/Chapter6}
+%		
+%		\chapter{系综理论}
+%			\include{Chapters/Chapter7}
+%		
+%		\chapter{相变的统计物理简介}
+%			\include{Chapters/Chapter8}
 		
 \end{document}
