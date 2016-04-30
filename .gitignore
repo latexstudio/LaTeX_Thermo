@@ -178,4 +178,8 @@ TSWLatexianTemp*
 
 # KBibTeX
 *~[0-9]*
-Chapters/Chapter5.tex
+
+
+## OTHERS:
+*.txt
+*.svg
