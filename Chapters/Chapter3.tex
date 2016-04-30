@@ -97,9 +97,10 @@
 			\m \eqdef \myPartial{G}{n}{T, \, p} = \left[ \frac{\pd}{\pd n} (n G_\text{m}) \right]_{T, \, p} = G_\text{m} \fullstop
 		\end{equation}
 		对于 \SI{1}{\mol} 物质，有
-		\begin{equation}
-			\dd \m = \dd G_\text{m} = -S_\text{m} \dd T + V_\text{m} \dd p \fullstop
+		\begin{equation} \label{EQ_FUNDAMENTAL_EQUATION_WITH_CHEMICAL_POTENTIAL}
+			\dd \m = \dd G_\text{m} = -S_\text{m} \dd T + V_\text{m} \dd p \comma
 		\end{equation}
+		这是关于 $\m$ 的基本微分方程。
 		
 		\blankline
 		
@@ -120,8 +121,8 @@
 		这是不矛盾的。}
 		在统计物理中，巨势与巨配分函数有关。
 		
-\section{平衡条件与稳定条件}
-	\subsection{平衡条件}
+\section{平衡条件与稳定条件} \label{SEC_平衡条件与稳定条件}
+	\subsection{平衡条件} \label{SUBSEC_平衡条件}
 		对于一个\emphB{单元两相}（即一种组分，两种状态）的系统，其平衡条件为
 		\begin{equation}
 			\vd S = \vd S_1 + \vd S_2 = 0 \comma
@@ -158,7 +159,77 @@
 			\vd^{\:2} \! S_1 = \frac{1}{2} \left( \frac{\pd^{\:2} \! S_1}{\pd U_1^2} \right) %TODO：20160420 (δS)^2还是δ^2 S
 		\end{align}
 		
-\section{单元系的复相平衡；相变分类；Ehrenfest公式}
+\section{单元系的复相平衡}%；相变分类；Ehrenfest公式}
+	\subsection{单元系的相图}
+		设单元系中有两个相（$\a$ 和 $\b$），根据\secref{SEC_平衡条件与稳定条件}\subsecref{SUBSEC_平衡条件}，其平衡条件为
+		\begin{braceEq}
+			T^\a &= T^\b \comma \\
+			p^\a &= p^\b \comma \\
+			\m^\a &= \m^\b \fullstop
+		\end{braceEq}
+		令 $T$、$p$ 分别为两相共同的温度和压强，并取它们为独立变量，则相变的平衡条件为
+		\begin{equation} \label{EQ_PHASE_TRANSFORMATION_CONDITION_FOR_1_COMPOSITION_AND_2_PHASE}
+			\m^\a (T, \, p) = \m^\b (T, \, p) \fullstop
+		\end{equation}
+		这实际上就是 $p$-$T$ 平面内一条曲线的方程。
+		
+		如果存在三个相（$\a$、$\b$ 和 $\g$）并且同时达到平衡，则有
+		\begin{equation}
+			\m^\a (T, \, p) = \m^\b (T, \, p) = \m^\g (T, \,p) \fullstop
+		\end{equation}
+		这表示 $p$-$T$ 平面内的一个点，即\emphA{三相点}。
+		
+		\begin{figure}[h]
+			\centering
+%			\includegraphics[width = 6 cm]{Phase_diagram_of_water.svg}
+			\caption{水的相图}
+			\label{FIG_PHASE_DIAGRAM_OF_WATER}
+		\end{figure}
+		
+		单元系的平衡性质利用\emphA{相图}可以清楚地表示。图~\ref{FIG_PHASE_DIAGRAM_OF_WATER} 显示的是水的相图。在三相点处，水的固、液、气三相共存。该点对应的温度为 \SI{273.16}{\kelvin}，压强为 \SI{611.657}{\pascal}。另一个值得注意的点是\emphA{临界点}，气液两相的平衡曲线终结于此处。对于水，该点对应的温度为 \SI{647}{\kelvin}，压强为 \SI{22.064}{\mega\pascal}。
+		
+	\subsection{Clausius-Clapeyron方程}
+		由式~\eqref{EQ_PHASE_TRANSFORMATION_CONDITION_FOR_1_COMPOSITION_AND_2_PHASE}，单元系中两相平衡的条件为
+		\begin{equation}
+			\m^\a (T, \, p) = \m^\b (T, \, p) \fullstop
+		\end{equation}
+		设 $(T + \dd T, \, p + \dd p)$ 为平衡曲线上邻近 $(T, \, p)$ 的一点。当 $T$ 和 $p$ 沿平衡曲线变化到 $(T + \dd T, \, p + \dd p)$ 时，$\m^\a$ 和 $\m^\b$ 仍将满足平衡条件，即
+		\begin{equation}
+			\m^\a (T + \dd T, \, p + \dd p) = \m^\b (T + \dd T, \, p + \dd p) \fullstop
+		\end{equation}
+		两边都在点 $(T, \, p)$ 处作Taylor展开，可得
+		\begin{equation}
+			\m^\a (T, \, p) + \dd \m^\a = \m^\b (T, \, p) + \dd \m^\b \fullstop
+		\end{equation}
+		因此有
+		\begin{equation} \label{EQ_dμα=dμβ}
+			\dd \m^\a = \dd \m^\b \fullstop
+		\end{equation}
+		根据关于 $\m$ 的基本微分方程 \eqref{EQ_FUNDAMENTAL_EQUATION_WITH_CHEMICAL_POTENTIAL} 式，可知
+		\begin{braceEq}
+			\dd \m^\a &= -S^\a_\text{m} \dd T + V^\a_\text{m} \dd p \comma \\
+			\dd \m^\b &= -S^\b_\text{m} \dd T + V^\b_\text{m} \dd p \fullstop
+		\end{braceEq}
+		将其代入式~\eqref{EQ_dμα=dμβ}，便有
+		\begin{equation} \label{EQ_CLAUSIUS_CLAPEYRON_RELATION_1}
+			\frac{\dd p}{\dd T} = \frac{\displaystyle S^\a_\text{m} - S^\b_\text{m}}{\displaystyle V^\a_\text{m} - V^\b_\text{m}} \fullstop
+		\end{equation}
+		
+		定义\emphA{相变潜热}
+		\begin{equation}
+			L_{\a \b} = T \left( S^\a_\text{m} - S^\b_\text{m} \right) \comma
+		\end{equation}
+		它表示 \SI{1}{\mol} 物质在保持温度、压强不变的条件下由 $\a$ 相转变为 $\b$ 相所吸收的热量。这样，\eqref{EQ_CLAUSIUS_CLAPEYRON_RELATION_1} 式就可以表述为
+		\begin{equation}
+			\frac{\dd p}{\dd T} = \frac{L_{\a \b}}{\displaystyle T \left( V^\a_\text{m} - V^\b_\text{m} \right)} \comma
+		\end{equation}
+		此即\emphA{Clausius–Clapeyron方程}。
+		
+		通常情况下，液体到气体的相变满足 $\dd p / \dd T > 0$；而液体到固体的相变满足 $\dd p / \dd T < 0$。需注意，水是一个常见的例外。液态的水变成冰，$\dd p / \dd T > 0$。
+		
+	\subsection{相变的分类}
+		根据Ehrenfest的分类方案，$n$ 级相变对应Gibbs函数 $n$ 阶导数的不连续变化。相变点处，化学势连续，而化学势一阶导数不连续的相变称为\emphA{一级相变}；化学势及其一阶导数均连续，而二阶导数不连续的相变称为\emphA{二级相变}。
+	\subsection{Ehrenfest方程}
 \section{气液相变；临界点行为}
 \section{临界指数；普适性}
 \section{Landau平均场理论}
