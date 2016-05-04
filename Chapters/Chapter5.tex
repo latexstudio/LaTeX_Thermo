@@ -1,4 +1,62 @@
 \section{微观态的经典及量子描述}
+	\subsection{经典描述}
+		微观态的经典描述以经典力学为基础，通常采用广义坐标与广义动量的形式。
+		
+		对于一个有 $r$ 个自由度的系统，需要用 $2r$ 个变量来描述其运动状态，即 $r$ 个广义坐标和 $r$ 个广义动量：
+		\begin{equation}
+			(q_i, \, p_i) \quad (i = 1, \, 2, \, \cdots, r) \fullstop
+		\end{equation}
+		系统的Hamilton量为
+		\begin{equation}
+			H = H(q_1, \, q_2, \, \cdots, q_r; \, p_1, \, p_2, \, \cdots, p_r; \, t) \comma
+		\end{equation}
+		正则方程为
+		\begin{braceEq}
+			\dot{q_i} &= \frac{\pd H}{\pd p_i} \comma \\
+			\dot{p_i} &= -\frac{\pd H}{\pd q_i} \fullstop
+		\end{braceEq}
+		
+		坐标和动量 $(q_1, \, q_2, \, \cdots, q_r; \, p_1, \, p_2, \, \cdots, p_r)$ 张成了一个 $2r$ 维空间，称为\emphA{\itshape{μ}空间}，每一组坐标和动量描述的点称为\emphA{代表点}。
+		
+		\begin{myExample}[自由粒子]
+			对于一个 $r = 3$ 的自由粒子，有
+			\begin{braceEq}
+				p_x = m \dot{x} \comma \\
+				p_y = m \dot{y} \comma \\
+				p_z = m \dot{z} \fullstop
+			\end{braceEq}
+			其 $\m$ 空间由 $(x, \, y, \, z; \, p_x, \, p_y, \, p_z)$ 张成。Hamilton量
+			\begin{equation}
+				H = \frac{1}{2m} \left( p_x^2 + p_y^2 +p_z^2 \right) \fullstop
+			\end{equation}
+			%TODO：20160504 示意图
+		\end{myExample}
+		
+		\begin{myExample}[一维谐振子]
+			质量为 $m$ 的物体受力 $F = -A x$ 的作用做简谐运动，其角频率
+			\begin{equation}
+				\o = \sqrt{\frac{A}{m}} \comma
+			\end{equation}
+			则其Hamilton量
+			\begin{equation}
+				H = \frac{p^2}{2m} + \frac{A}{2} x^2 = \frac{p^2}{2m} + \frac{1}{2} m \o^2 x^2 \fullstop
+			\end{equation}
+			
+			若总能量一定，即 $H = E$，则
+			\begin{equation}
+				\frac{p^2}{2mE} + \frac{x^2}{2E / m \o^2} = 1 \comma
+			\end{equation}
+			这在 $\m$ 空间表示一个椭圆（见图），其面积
+			\begin{equation}
+				S_\text{椭圆} = \p \, a b = \p \cdot \sqrt{\frac{2E}{m \o^2}} \cdot \sqrt{2mE} = \frac{2 \p E}{\o} \fullstop
+			\end{equation}
+			%TODO：20160504 示意图
+		\end{myExample}
+	\subsection{单粒子的量子描述}
+	\subsection{多粒子的量子描述}
 %\section{}
 %\section{}
 %\section{}
+
+\raggedbottom%FIXME：20260325 交叉引用、脚注每页重新计数失效，必须加上该行
+\pagebreak
