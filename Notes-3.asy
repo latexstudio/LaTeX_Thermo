@@ -7,7 +7,7 @@ settings.inlineimage=true;
 settings.embed=true;
 settings.toolbar=false;
 viewportmargin=(2,2);
-
+ %FIXME：20160621 需要修改此部分，以对应正文字体设置
 usepackage("amsmath");
 usepackage("mathtools");
 usepackage("mathdesign", "adobe-garamond");

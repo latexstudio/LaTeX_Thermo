@@ -1,22 +1,23 @@
-%TODO的使用
+%TODO 等的使用
 %%TODO 有关内容
 %%FIXME 格式的bug
 %%HACK 粗鄙技巧
 
 %TODO——注意事项
 %FIXME：20160422 en dash 与连接号 hyphen （人名中的使用）
+%FIXME：20160621 adobe-garamond 的 semibold 与 bold 使用时需注意。实现方法是将字体文件重命名
 %% 脚注段落缩进，带框公式不加标点
 %% 理想气体、可逆、绝热等公式特殊标注
 %% 绝热：Adiabatic 等压：Isobaric 等容：Isochoric 等温：Isothermal 等熵：Isentropic 等焓：Isenthalpic 多方：Polytropic 准静态：Quasistatic
 
-\documentclass[UTF8]{ctexbook}
+\documentclass{book}
+%\documentclass[UTF8]{ctexbook}
 
 %TODO——宏包
 %页面格式
 \usepackage{geometry}
 	\geometry{a4paper, twoside, left = 2.54 cm, right = 2.54 cm, top = 3.18 cm, bottom = 3.18 cm, headheight = 3 cm}
 \usepackage{fancyhdr}
-	\pagestyle{fancy}
 	\fancyhf{}
 	\fancyhead[EL]{\nouppercase{\CJKfamily{楷体} \leftmark}}
 	\fancyhead[OR]{\nouppercase{\CJKfamily{楷体} \rightmark}}
@@ -27,12 +28,15 @@
 %	\newcommand{\sectionbreak}{\clearpage}
 
 %交叉引用、超链接、PDF书签
-\usepackage[hyperfootnotes=false]{hyperref}
+\usepackage[hyperfootnotes = false]{hyperref}
 	\hypersetup{
 		bookmarksopen = true,
 		bookmarksopenlevel = 1,
 		pdfborder = 0 0 0
-	}%FIXME：PDF书签有公式会报错，Latex入门 p173
+	}
+%FIXME：防止PDF书签报错（LaTeX入门 p173）
+%%使用 \texorpdfstring{TeX符号}{PDF书签符号}
+%%例：非线性\texorpdfstring{$\sigma$}{σ}模型
 
 %脚注
 \usepackage[stable, perpage]{footmisc}
@@ -53,20 +57,35 @@
 	\newcommand{\cmark}{\ding{51}}
 	\newcommand{\xmark}{\ding{55}}
 
+%字体
+\usepackage[no-math]{fontspec}
+	\setmainfont[
+		Ligatures = TeX,
+		BoldFont = AGaramondPro-Semibold.otf,
+		ItalicFont = AGaramondPro-Italic.otf
+	]{AGaramondPro-Regular.otf}
+	\newfontfamily{\helvetica}[
+		Ligatures = TeX,
+		BoldFont = HelveticaNeueLTPro-Roman.otf,
+		ItalicFont = HelveticaNeueLTPro-Roman.otf
+	]{HelveticaNeueLTPro-Roman.otf}
+	\newfontfamily{\myriad}[Ligatures = TeX]{MyriadPro-Regular.otf}
+
 %中文支持
+\usepackage[UTF8, heading = true]{ctex} %必须放在 xeCJK 之前调用，否则会覆盖字体设置
 \usepackage{xeCJK}
 	\xeCJKsetup{
-%		PunctStyle = quanjiao,
 		AutoFakeBold = false,
 		AutoFakeSlant = false
 	}
-	\setCJKmainfont[BoldFont = 华文中宋, ItalicFont = 华文楷体, Mapping = fullwidth-stop]{华文宋体}
-	\setCJKfamilyfont{中宋}[Mapping = fullwidth-stop]{华文中宋}
-	\setCJKfamilyfont{楷体}[Mapping = fullwidth-stop]{华文楷体}
-	\setCJKfamilyfont{仿宋}[Mapping = fullwidth-stop]{华文仿宋}
-	\setCJKfamilyfont{黑体}[Mapping = fullwidth-stop]{华文黑体}
-	\newcommand{\myHeavy}{\fontspec{MyriadPro-Regular} \CJKfamily{黑体}}
-%\usepackage{ctex} %已经使用了ctexbook文档类
+	\setCJKmainfont[BoldFont = 华文中宋, ItalicFont = 华文楷体, Mapping = fullwidth-stop]{宋体}
+	\setCJKfamilyfont{中宋}[BoldFont = 华文中宋, ItalicFont = 华文中宋, Mapping = fullwidth-stop]{华文中宋}
+	\setCJKfamilyfont{楷体}[BoldFont = 华文楷体, ItalicFont = 华文楷体, Mapping = fullwidth-stop]{华文楷体}
+	\setCJKfamilyfont{仿宋}[BoldFont = 华文仿宋, ItalicFont = 华文仿宋, Mapping = fullwidth-stop]{华文仿宋}
+	\setCJKfamilyfont{黑体}[BoldFont = 黑体, ItalicFont = 黑体, Mapping = fullwidth-stop]{黑体}
+	\newcommand{\myHeavy}{\myriad \CJKfamily{黑体}}
+%\usepackage[UTF8, heading = true]{ctex}
+	\pagestyle{fancy}
 	\setcounter{secnumdepth}{4}
 	\ctexset{
 		part = {
@@ -74,7 +93,7 @@
 			name = {第, 篇}
 		},
 		chapter = {
-			format = {\bfseries \LARGE \raggedright},
+			format = {\bfseries  \LARGE \raggedright},
 		},
 		section = {
 			format = {\bfseries \Large \centering},
@@ -100,7 +119,7 @@
 		group-separator = \text{~}
 	}
 
-%枚举
+%项目列表
 \usepackage{enumitem}
 	\SetLabelAlign{leftalignwithindent}{\hspace{2.1 em} \makebox[1.6 em][l]{#1}}
 
@@ -133,9 +152,8 @@
 
 %图片
 \usepackage{graphicx}
-%\usepackage{svg}
 \usepackage{asymptote}
-	\begin{asydef}
+	\begin{asydef} %FIXME：20160621 需要修改此部分，以对应正文字体设置
 		usepackage("amsmath");
 		usepackage("mathtools");
 		usepackage("mathdesign", "adobe-garamond");
@@ -239,8 +257,10 @@
 %引入文件
 \let \oldInclude = \include
 \renewcommand{\include}[1]{{\let \clearpage = \relax \oldInclude{#1}}}
+
 %空行
 \newcommand{\blankline}{\mbox{}}
+
 %自定义列表项目（不可删除换行！）
 \newcommand{\myItem}[1]{
 	\item
@@ -248,14 +268,17 @@
 	
 	
 }
+
 %引用格式
 \newcommand{\secref}[1]{\secSymbol \ref{#1} }
 \newcommand{\subsecref}[1]{第\ref{#1}小节}
 \newcommand{\egref}[1]{例 \ref{#1}}
+
 %公式标注
 \newcommand{\myTag}[1]{\tag*{\CJKfamily{楷体} [#1]}}
 \newcommand{\myTagNumbering}[1]{\refstepcounter{equation} \tag*{\CJKfamily{楷体} [#1] \, (\theequation)} }
 
+%TODO——标题页
 \title{
 	\vspace{-4 cm}
 	\bfseries
