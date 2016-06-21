@@ -186,3 +186,9 @@ TSWLatexianTemp*
 ## OTHERS:
 *.txt
 *.svg
+*.dat
+*.jpg
+*.png
+*.csv
+*.xls
+*.xlsx
