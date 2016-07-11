@@ -1,12 +1,16 @@
 %TODO 等的使用
-%%TODO 有关内容
-%%FIXME 格式的bug
+%%TODO 内容问题
+%%FIXME 格式问题
 %%HACK 粗鄙技巧
+%%CODE 代码改进
 
 %TODO——注意事项
 %FIXME：20160422 en dash 与连接号 hyphen （人名中的使用）
 %FIXME：20160621 adobe-garamond 的 semibold 与 bold 使用时需注意。实现方法是将字体文件重命名
-%% 脚注段落缩进，带框公式不加标点
+%FIXME：20160625 由于改用 TeX Live 2016，上一条可能失效
+%FIXME：20160625 英文名词改用半角括号
+%FIXME：20160625 Hamilton 函数使用花体 H（\scH）
+%CODE：20160625 每行 80 字符限制，中英文、数字之间加空格
 %% 理想气体、可逆、绝热等公式特殊标注
 %% 绝热：Adiabatic 等压：Isobaric 等容：Isochoric 等温：Isothermal 等熵：Isentropic 等焓：Isenthalpic 多方：Polytropic 准静态：Quasistatic
 
@@ -62,14 +66,25 @@
 	\setmainfont[
 		Ligatures = TeX,
 		BoldFont = AGaramondPro-Semibold.otf,
+%		BoldFont = AGaramondPro-Bold.otf,
 		ItalicFont = AGaramondPro-Italic.otf
 	]{AGaramondPro-Regular.otf}
-	\newfontfamily{\helvetica}[
+%	\setsansfont[
+%		Ligatures = TeX,
+%	]{Source Sans Pro}
+	\setsansfont[
 		Ligatures = TeX,
-		BoldFont = HelveticaNeueLTPro-Roman.otf,
-		ItalicFont = HelveticaNeueLTPro-Roman.otf
-	]{HelveticaNeueLTPro-Roman.otf}
-	\newfontfamily{\myriad}[Ligatures = TeX]{MyriadPro-Regular.otf}
+		ItalicFont = MyriadPro-It.otf
+	]{MyriadPro-Regular.otf}
+%	\newfontfamily{\helvetica}[
+%		Ligatures = TeX,
+%		BoldFont = HelveticaNeueLTPro-Roman.otf,
+%		ItalicFont = HelveticaNeueLTPro-Roman.otf
+%	]{HelveticaNeueLTPro-Roman.otf}
+%	\newfontfamily{\myriad}[
+%		Ligatures = TeX,
+%		ItalicFont = MyriadPro-It.otf
+%	]{MyriadPro-Regular.otf}
 
 %中文支持
 \usepackage[UTF8, heading = true]{ctex} %必须放在 xeCJK 之前调用，否则会覆盖字体设置
@@ -78,12 +93,28 @@
 		AutoFakeBold = false,
 		AutoFakeSlant = false
 	}
-	\setCJKmainfont[BoldFont = 华文中宋, ItalicFont = 华文楷体, Mapping = fullwidth-stop]{宋体}
+	\setCJKmainfont[
+		BoldFont = 华文中宋,
+		ItalicFont = 方正楷体_GBK,
+		Mapping = fullwidth-stop
+	]{方正书宋_GBK}
 	\setCJKfamilyfont{中宋}[BoldFont = 华文中宋, ItalicFont = 华文中宋, Mapping = fullwidth-stop]{华文中宋}
-	\setCJKfamilyfont{楷体}[BoldFont = 华文楷体, ItalicFont = 华文楷体, Mapping = fullwidth-stop]{华文楷体}
-	\setCJKfamilyfont{仿宋}[BoldFont = 华文仿宋, ItalicFont = 华文仿宋, Mapping = fullwidth-stop]{华文仿宋}
-	\setCJKfamilyfont{黑体}[BoldFont = 黑体, ItalicFont = 黑体, Mapping = fullwidth-stop]{黑体}
-	\newcommand{\myHeavy}{\myriad \CJKfamily{黑体}}
+	\setCJKfamilyfont{楷体}[BoldFont = 方正楷体_GBK, ItalicFont = 方正楷体_GBK, Mapping = fullwidth-stop]{方正楷体_GBK}
+	\setCJKfamilyfont{仿宋}[BoldFont = 方正仿宋_GBK, ItalicFont = 方正仿宋_GBK, Mapping = fullwidth-stop]{方正仿宋_GBK}
+	\setCJKfamilyfont{黑体}[BoldFont = 方正黑体_GBK, ItalicFont = 方正黑体_GBK, Mapping = fullwidth-stop]{方正黑体_GBK}
+%	\setCJKmainfont[BoldFont = 华文中宋, ItalicFont = 华文楷体, Mapping = fullwidth-stop]{宋体}
+%	\setCJKmainfont[BoldFont = 华文中宋, ItalicFont = 华文楷体, Mapping = fullwidth-stop]{华文宋体}
+%	\setCJKmainfont[BoldFont = FandolSong-Bold, ItalicFont = FandolKai-Regular, Mapping = fullwidth-stop]{FandolSong-Regular}
+%	\setCJKfamilyfont{fs1}{FandolSong-Regular.otf}
+%	\setCJKfamilyfont{fs2}{FandolSong-Bold.otf}
+%	\setCJKfamilyfont{中宋}[BoldFont = 华文中宋, ItalicFont = 华文中宋, Mapping = fullwidth-stop]{华文中宋}
+%	\setCJKfamilyfont{楷体}[BoldFont = 华文楷体, ItalicFont = 华文楷体, Mapping = fullwidth-stop]{华文楷体}
+%	\setCJKfamilyfont{仿宋}[BoldFont = 华文仿宋, ItalicFont = 华文仿宋, Mapping = fullwidth-stop]{华文仿宋}
+%	\setCJKfamilyfont{黑体}[BoldFont = 黑体, ItalicFont = 黑体, Mapping = fullwidth-stop]{黑体}
+%	\setCJKfamilyfont{黑体}[BoldFont = 华文黑体, ItalicFont = 华文黑体, Mapping = fullwidth-stop]{华文黑体}
+%	\setCJKfamilyfont{黑体}[BoldFont = FandolHei-Regular, ItalicFont = FandolHei-Regular, Mapping = fullwidth-stop]{FandolHei-Regular}
+%	\setCJKfamilyfont{黑体}[BoldFont = 思源黑体 CN Regular, ItalicFont = 思源黑体 CN Regular, Mapping = fullwidth-stop]{思源黑体 CN Regular}
+	\newcommand{\myHeavy}{\sffamily \CJKfamily{黑体}}
 %\usepackage[UTF8, heading = true]{ctex}
 	\pagestyle{fancy}
 	\setcounter{secnumdepth}{4}
@@ -93,7 +124,7 @@
 			name = {第, 篇}
 		},
 		chapter = {
-			format = {\bfseries  \LARGE \raggedright},
+			format = {\bfseries \LARGE \raggedright},
 		},
 		section = {
 			format = {\bfseries \Large \centering},
@@ -153,13 +184,13 @@
 %图片
 \usepackage{graphicx}
 \usepackage{asymptote}
-	\begin{asydef} %FIXME：20160621 需要修改此部分，以对应正文字体设置
+	\begin{asydef}
 		usepackage("amsmath");
 		usepackage("mathtools");
 		usepackage("mathdesign", "adobe-garamond");
 		usepackage("bm");
 		usepackage("xeCJK");
-			texpreamble("\setCJKmainfont[BoldFont = 华文中宋, ItalicFont = 华文楷体]{华文宋体}");
+			texpreamble("\setCJKmainfont[BoldFont = 华文中宋, ItalicFont = 方正楷体_GBK, Mapping = fullwidth-stop ]{方正书宋_GBK}");
 			texpreamble("\setmainfont{AGaramondPro-Regular.otf}");
 		usepackage("siunitx");
 			texpreamble("\sisetup{
@@ -248,7 +279,125 @@
 	{\end{tabular} \end{table}}
 
 %TODO——自定义命令
-\input{Symbols.tex}
+%\input{Symbols.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%大写正体字母
+\newcommand{\rmY}{\mathrm{Y}}
+
+%大写手写体字母
+\newcommand{\scF}{\mathcal{F}}
+\newcommand{\scH}{\mathcal{H}}
+\newcommand{\scI}{\mathcal{I}}
+\newcommand{\scJ}{\mathcal{J}}
+\newcommand{\scL}{\mathcal{L}}
+\newcommand{\scP}{\mathcal{P}}
+\newcommand{\scR}{\mathcal{R}}
+\newcommand{\scS}{\mathcal{S}}
+
+%小写希腊字母
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\g}{\gamma}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\epsilon}
+\newcommand{\ve}{\varepsilon}
+\newcommand{\z}{\zeta}
+\newcommand{\h}{\eta}
+\newcommand{\q}{\theta}
+\renewcommand{\th}{\theta}
+\newcommand{\vq}{\vartheta}
+\newcommand{\vth}{\vartheta}
+\renewcommand{\i}{\iota}
+\renewcommand{\k}{\varkappa} %这两个是相反的
+\newcommand{\vk}{\kappa} %这两个是相反的
+\renewcommand{\l}{\lambda}
+\renewcommand{\m}{\mu}
+\newcommand{\n}{\nu}
+\newcommand{\x}{\xi}
+%\renewcommand{\p}{\pi} %\p 已定义为正体π
+\newcommand{\vp}{\varpi}
+\renewcommand{\r}{\rho}
+\newcommand{\vr}{\varrho}
+\newcommand{\s}{\sigma}
+\newcommand{\vs}{\varsigma}
+\renewcommand{\t}{\tau}
+\renewcommand{\u}{\upsilon}
+\newcommand{\f}{\phi}
+\renewcommand{\j}{\varphi}
+\newcommand{\vf}{\varphi}
+\renewcommand{\c}{\chi}
+\newcommand{\y}{\psi}
+\renewcommand{\o}{\omega}
+\newcommand{\w}{\omega}
+
+%大写希腊字母
+\renewcommand{\G}{\varGamma}
+\newcommand{\D}{\varDelta}
+\newcommand{\Q}{\varTheta}
+\newcommand{\Th}{\varTheta}
+\renewcommand{\L}{\varLambda}
+\newcommand{\X}{\varXi}
+\renewcommand{\P}{\varPi}
+\let \secSymbol = \S
+\renewcommand{\S}{\varSigma}
+\renewcommand{\U}{\varUpsilon}
+\newcommand{\F}{\varPhi}
+\newcommand{\Y}{\varPsi}
+\renewcommand{\O}{\varOmega}
+\newcommand{\W}{\varOmega}
+
+%常数
+\newcommand{\p}{\piup} %圆周率
+\newcommand{\ee}{\mathrm{e}} %自然对数基
+\newcommand{\ii}{\mathrm{i}} %虚数单位
+\newcommand{\hb}{\hbar} %约化Planck常数
+\newcommand{\kB}{k_{\mathrm{B}}} %Boltzmann常数
+\newcommand{\pfs}{\e_0} %真空介电常数 Permittivity of Free Space
+
+%数学修饰符号
+\newcommand{\vecb}[1]{\bm{#1}} %矢量用斜体，根据ISO 80000-2/2009
+\renewcommand{\bar}[1]{\overline{#1}} %上横线
+\newcommand{\tl}[1]{\widetilde{#1}} %弯号
+\newcommand{\op}[1]{\hat{#1}} %量子力学算符
+
+%数学函数
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert} %绝对值
+
+%算子、算符
+%已经调整好前后间距
+\DeclareMathOperator{\incr}{\Delta\!}
+\DeclareMathOperator{\dd}{\mathrm{d}\!} %微分 Differential D
+\DeclareMathOperator{\db}{{\mkern2.5mu\mathchar'26\mkern-11mu\mathrm{d}}\!} %不完全微分 Inexact Differential D; Only for "Adobe Garamond" font!
+\DeclareMathOperator{\pd}{\partial\!} %偏微分 Partial D
+\DeclareMathOperator{\vd}{\deltaup\!} %变分 Variational D
+\DeclareMathOperator{\laplac}{\nabla^2\!} %Laplace算子
+
+%复合数学符号
+\newcommand{\infint}{\int_{-\infty}^{+\infty}} %上下限无穷的积分
+\newcommand{\iTonSum}{\sum_{i = 1}^{n}} %求和 i=1..n
+\newcommand{\iToNSum}{\sum_{i = 1}^{N}} %求和 i=1..N
+\newcommand{\nEnum}[2]{#1 = 1, \, 2, \, \dots, \, #2} %如x=1,2,...,n
+%\newcommand{\coordinateLabel}[2]{#1\text{-}#2} %如p-V坐标
+\newcommand{\myPartial}[3]{\left( \frac{\pd #1}{\pd #2} \right)_{#3}} %带括号的偏微分
+\newcommand{\myPartialDisplay}[3]{\left( \dfrac{\pd #1}{\pd #2} \right)_{#3}}
+
+%重定义符号
+\newcommand{\approach}{\rightarrow} %趋向于
+\newcommand{\eqdef}{\equiv} %定义等号（三线）
+\newcommand{\dotTimes}{\cdot} %点乘
+
+%公式用标点、文字
+\newcommand{\comma}{\text{，}}
+\newcommand{\fullstop}{\text{．}}
+\newcommand{\semicomma}{\text{；}}
+\newcommand{\const}{\text{const.}}
+
+%正文用符号
+%\catcode`\。 = \active
+%\newcommand{。}{．} %句号用句点代替，已用xeCJK的Mapping代替
+%\newcommand{\mySec}{{\fontspec{Times New Roman} \S \,}} %TODO：20160302 冲突；章节符号，Garamond 字体不好看
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %强调
 \newcommand{\emphA}[1]{{\myHeavy #1}}
@@ -324,8 +473,8 @@
 %	\part{统计物理}
 		\chapter{统计物理学基本概念}
 			\include{Chapters/Chapter5}
-		
-%		\chapter{统计}
+%		
+%		\chapter{三大统计}
 %			\include{Chapters/Chapter6}
 %		
 %		\chapter{系综理论}

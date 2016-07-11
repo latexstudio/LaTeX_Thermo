@@ -59,11 +59,15 @@
 	AutoFakeBold = false,
 	AutoFakeSlant = false
 }
-\setCJKmainfont[BoldFont = 华文中宋, ItalicFont = 华文楷体, Mapping = fullwidth-stop]{华文宋体}
+%	\setCJKfamilyfont[BoldFont = 华文中宋, ItalicFont = 华文楷体, Mapping = fullwidth-stop]{宋体}
+\setCJKmainfont{华文宋体}
 \setCJKfamilyfont{中宋}[Mapping = fullwidth-stop]{华文中宋}
 \setCJKfamilyfont{楷体}[Mapping = fullwidth-stop]{华文楷体}
 \setCJKfamilyfont{仿宋}[Mapping = fullwidth-stop]{华文仿宋}
 \setCJKfamilyfont{黑体}[Mapping = fullwidth-stop]{华文黑体}
+\setCJKfamilyfont{宋体}{宋体}
+\setCJKfamilyfont{fs1}{FandolSong-Regular.otf}
+\setCJKfamilyfont{fs2}{FandolSong-Bold.otf}
 \newcommand{\myHeavy}{\fontspec{MyriadPro-Regular} \CJKfamily{黑体}}
 %\usepackage{ctex} %已经使用了ctexbook文档类
 \setcounter{secnumdepth}{4}
@@ -272,7 +276,19 @@
 \begin{document}
 	\chapter{事实上}
 	\section{是飒飒}
-	你好LaTex3我是\LaTeX
+	\emphA{刚刚}你好，好、这是；事实。事．实！事实？（不过）【速度】黑体：“那个‘模块’的”察盗——擦
+	
+	{\CJKfamily{宋体}
+		\emphA{刚刚}你好，好、这是；事实。事．实！事实？（不过）【速度】黑体：“那个‘模块’的”察盗——擦
+	}
+	
+	{\CJKfamily{fs1}
+		\emphA{刚刚}你好，好、这是；事实。事．实！事实？（不过）【速度】黑体：“那个‘模块’的”察盗——擦
+	}
+	
+	{\CJKfamily{fs2}
+		\emphA{刚刚}你好，好、这是；事实。事．实！事实？（不过）【速度】黑体：“那个‘模块’的”察盗——擦
+	}
 	\begin{figure}[h]
 		\includegraphics[width=10cm]{Phase_diagram_of_water}
 		\caption{shuidexiangtu}

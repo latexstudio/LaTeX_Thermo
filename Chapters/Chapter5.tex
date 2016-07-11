@@ -1,5 +1,5 @@
 \section{微观态的经典及量子描述}
-	\subsection{经典描述}
+	\subsection{单粒子的经典描述}
 		微观态的经典描述以经典力学为基础，通常采用广义坐标与广义动量的形式。
 		
 		对于一个有 $r$ 个自由度的系统，需要用 $2r$ 个变量来描述其运动状态，即 $r$ 个广义坐标和 $r$ 个广义动量：
@@ -39,21 +39,98 @@
 			\end{equation}
 			则其Hamilton量
 			\begin{equation}
-				\mathcal{H} H = \frac{p^2}{2m} + \frac{A}{2} x^2 = \frac{p^2}{2m} + \frac{1}{2} m \o^2 x^2 \fullstop
+				H = \frac{p^2}{2m} + \frac{A}{2} x^2 = \frac{p^2}{2m} + \frac{1}{2} m \o^2 x^2 \fullstop
 			\end{equation}
 			
 			若总能量一定，即 $H = E$，则
 			\begin{equation}
 				\frac{p^2}{2mE} + \frac{x^2}{2E / m \o^2} = 1 \comma
 			\end{equation}
-			这在 $\m$ 空间表示一个椭圆（见图），其面积
+			这在 $\m$ 空间中表示一个椭圆（见图），其面积
 			\begin{equation}
 				S_\text{椭圆} = \p \, a b = \p \cdot \sqrt{\frac{2E}{m \o^2}} \cdot \sqrt{2mE} = \frac{2 \p E}{\o} \fullstop
 			\end{equation}
 			%TODO：20160504 示意图
 		\end{myExample}
+		
+		\begin{myExample}[转子]
+			%TODO：20160624 未完成
+		\end{myExample}
+		
 	\subsection{单粒子的量子描述}
-	\subsection{多粒子的量子描述}
+		微观态的量子描述以量子力学为基础。粒子的动量 $\vecb{p}$、能量 $E$ 满足\emphA{de Broglie关系}：
+		\begin{braceEq}
+			\vecb{p} &= \hbar \vecb{k} \comma \\
+			E &= \hbar \o \comma
+		\end{braceEq}
+		其中的 $\hbar$ 称为\emphA{（约化）Planck常数}，其值为
+		\begin{equation}
+			\hbar = \frac{h}{2\p} = \SI{1.0545718e-34}{\joule\second} \fullstop
+		\end{equation}
+		式中的 $h$ 也是Planck常数。
+		
+		de Broglie关系说明微观粒子具有\emphA{波粒二象性}。这就引出了另一个重要结果——\emphA{不确定关系}\footnote{
+			更精确的表述为 $\incr p \incr q \geqslant \hbar / 2 $。
+		}：
+		\begin{equation}
+			\incr p \incr q \gtrsim h \fullstop
+		\end{equation}
+		由此，粒子的动量和坐标不可能被同时精确测量，因而其运动也就无法用经典的轨道概念描述，必须改用波函数来描述。
+		
+		粒子波函数 $\Y$ 满足的方程即\emphA{Schrödinger方程}：
+		\begin{equation}
+			\ii \frac{\pd}{\pd t} \Y = \op{H} \Y \comma
+		\end{equation}
+		式中的 $\op{H}$ 是Hamilton算符。在定态情况（即将时间变量分离后），Schrödinger方程化为
+		\begin{equation}
+			\op{H} \Y = E \Y \fullstop
+		\end{equation}
+		
+		\begin{myExample}[立方体容器内的自由粒子]
+			设粒子在边长为 $L$ 的立方体容器内运动，则其量子态（即波函数）有平面波的形式：
+			\begin{equation}
+				\Y_{n_1, \, n_2, \, n_3} (\vecb{r}) \sim \ee^{\ii \vecb{p} \cdot \vecb{r} / \hbar} \comma
+				\quad n_i = \pm 1, \, \pm 2, \, \pm 3, \, \cdots \fullstop
+			\end{equation}
+			求解Schrödinger方程，可以发现动量与能量的本征值都是量子化的：
+			\begin{braceEq}
+				\vecb{p} &= p_x \vecb{i} + p_y \vecb{j} + p_z \vecb{k}
+				= \frac{2\p\hbar}{L} n_1 \vecb{i} + n_2 \vecb{j} + n_3 \vecb{k} \comma \\
+				E &= \frac{1}{2m} \left( p_x^2+p_y^2+p_z^2 \right)
+				= \frac{\displaystyle 2\p^2 \hbar^2}{\displaystyle mL^2} \left( n_1^2+n_2^2+n_3^2 \right) \fullstop
+			\end{braceEq} %HACK：20160624 乘方位置调整
+			量子化的能量也成为\emphA{能级}。对于能级
+			\begin{equation}
+				E = \frac{\displaystyle 2\p^2 \hbar^2}{\displaystyle mL^2} \comma
+			\end{equation}
+			它对应6种量子态：
+			\begin{equation}
+				\left(\pm 1, \, 0, \, 0 \right),\,
+				\left(0, \, \pm 1, \, 0 \right),\,
+				\left(0, \, 0, \, \pm 1 \right) \fullstop
+			\end{equation}
+			这种现象称为能级\emphA{简并}。同一能级对应量子态的数目称为\emphA{简并度}。显然，这里的简并度为6。而能量更高的一个能级
+			\begin{equation}
+				E = \frac{\displaystyle 2\p^2 \hbar^2}{\displaystyle mL^2} \times 3
+				=\frac{\displaystyle 2\p^2 \hbar^2}{\displaystyle mL^2} \times (1+1+1)
+			\end{equation}
+			则对应 $2^3=8$ 个量子态，它的简并度为8。
+		\end{myExample}
+		
+		\begin{myExample}[一维谐振子]
+			
+		\end{myExample}
+		
+		\begin{myExample}[转子]
+			
+		\end{myExample}%TODO：20160624 未完成
+		
+	\subsection{多粒子体系的描述}
+		对于 $N$ 个粒子组成的体系，设每个粒子的自由度为 $r$，则每个粒子可用 $2r$ 个变量 $(q_1, \, q_2, \, \cdots, q_r; \allowbreak \, p_1, \, p_2, \, \cdots, p_r)$ 来描述。此时，系统的总自由度 %FIXME：20160624 公式换行
+		\begin{equation}
+			f = Nr \comma
+		\end{equation}
+		因而系统的运动需要用 $2f$ 个变量来刻画。它们张成了一个 $2f$ 维空间，称为\emphA{\itshape{Γ}空间}，也叫\emphA{相空间}。
 %\section{}
 %\section{}
 %\section{}

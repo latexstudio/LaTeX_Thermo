@@ -7,13 +7,13 @@ settings.inlineimage=true;
 settings.embed=true;
 settings.toolbar=false;
 viewportmargin=(2,2);
- %FIXME：20160621 需要修改此部分，以对应正文字体设置
+
 usepackage("amsmath");
 usepackage("mathtools");
 usepackage("mathdesign", "adobe-garamond");
 usepackage("bm");
 usepackage("xeCJK");
-texpreamble("\setCJKmainfont[BoldFont = 华文中宋, ItalicFont = 华文楷体]{华文宋体}");
+texpreamble("\setCJKmainfont[BoldFont = 华文中宋, ItalicFont = 方正楷体_GBK, Mapping = fullwidth-stop ]{方正书宋_GBK}");
 texpreamble("\setmainfont{AGaramondPro-Regular.otf}");
 usepackage("siunitx");
 texpreamble("\sisetup{

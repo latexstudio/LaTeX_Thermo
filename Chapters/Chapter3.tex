@@ -186,9 +186,11 @@
 			\label{FIG_PHASE_DIAGRAM_OF_WATER}
 		\end{figure}
 		
-		单元系的平衡性质利用\emphA{相图}可以清楚地表示。图~\ref{FIG_PHASE_DIAGRAM_OF_WATER} 显示的是水的相图。在三相点处，水的固、液、气三相共存。该点对应的温度为 \SI{273.16}{\kelvin}，压强为 \SI{611.657}{\pascal}。另一个值得注意的点是\emphA{临界点}，气液两相的平衡曲线终结于此处。对于水，该点对应的温度为 \SI{647}{\kelvin}，压强为 \SI{22.064}{\mega\pascal}。
+		单元系的平衡性质利用\emphA{相图}可以清楚地表示。图%~\ref{FIG_PHASE_DIAGRAM_OF_WATER} 
+		显示的是水的相图。在三相点处，水的固、液、气三相共存。该点对应的温度为 \SI{273.16}{\kelvin}，压强为 \SI{611.657}{\pascal}。另一个值得注意的点是\emphA{临界点}，气液两相的平衡曲线终结于此处。对于水，该点对应的温度为 \SI{647}{\kelvin}，压强为 \SI{22.064}{\mega\pascal}。
+		%TODO：20160711 相图
 		
-	\subsection{Clausius-Clapeyron方程}
+	\subsection{Clausius--Clapeyron方程}
 		由式~\eqref{EQ_PHASE_TRANSFORMATION_CONDITION_FOR_1_COMPOSITION_AND_2_PHASE}，单元系中两相平衡的条件为
 		\begin{equation}
 			\m^\a (T, \, p) = \m^\b (T, \, p) \fullstop
@@ -219,18 +221,54 @@
 		\begin{equation}
 			L_{\a \b} = T \left( S^\a_\text{m} - S^\b_\text{m} \right) \comma
 		\end{equation}
-		它表示 \SI{1}{\mol} 物质在保持温度、压强不变的条件下由 $\a$ 相转变为 $\b$ 相所吸收的热量。这样，\eqref{EQ_CLAUSIUS_CLAPEYRON_RELATION_1} 式就可以表述为
+		它表示 \SI{1}{\mol} 物质在保持温度、压强不变的条件下由 $\a$ 相转变为 $\b$ 相所吸收的热量。这样，\eqref{EQ_CLAUSIUS_CLAPEYRON_RELATION_1} 就可以表述为
 		\begin{equation}
 			\frac{\dd p}{\dd T} = \frac{L_{\a \b}}{\displaystyle T \left( V^\a_\text{m} - V^\b_\text{m} \right)} \comma
 		\end{equation}
-		此即\emphA{Clausius–Clapeyron方程}。
+		此即\emphA{Clausius--Clapeyron方程}。
 		
 		通常情况下，液体到气体的相变满足 $\dd p / \dd T > 0$；而液体到固体的相变满足 $\dd p / \dd T < 0$。需注意，水是一个常见的例外。液态的水变成冰，$\dd p / \dd T > 0$。
 		
 	\subsection{相变的分类}
 		根据Ehrenfest的分类方案，$n$ 级相变对应Gibbs函数 $n$ 阶导数的不连续变化。相变点处，化学势连续，而化学势一阶导数不连续的相变称为\emphA{一级相变}；化学势及其一阶导数均连续，而二阶导数不连续的相变称为\emphA{二级相变}。
 		
+		Fisher推广了Ehrenfest的分类方案。在他的方案中，化学势及其一阶导数均连续，而二阶导数或者不连续、或者\emphB{发散}的相变称为二级相变。
+		
+		……%TODO：20160711 举例
+		
 	\subsection{Ehrenfest方程}
+		Clausius--Clapeyron方程的一种形式是 \eqref{EQ_CLAUSIUS_CLAPEYRON_RELATION_1} 式：
+		\begin{equation} \label{EQ_CLAUSIUS_CLAPEYRON_RELATION_BEFORE_EHRENFEST_EQUATION}
+			\frac{\dd p}{\dd T} = \frac{\displaystyle S^\b_\text{m} - S^\g_\text{m}}{\displaystyle V^\b_\text{m} - V^\g_\text{m}} = \frac{\incr S_\text{m}}{\incr V_\text{m}}\fullstop
+		\end{equation}
+		对于二级相变（按照Ehrenfest的分类方案），$\incr S_\text{m} = 0$ 且 $\incr V_\text{m} = 0$，因而上式成为 $0/0$ 的不定式。这时，按照l'Hôpital法则处理，即将分子分母同时对 $T$ 求偏导，可得
+		\begin{equation} \label{EQ_EHRENFEST_EQUATION_A}
+			\frac{\dd p}{\dd T}
+			=\frac{\incr \myPartialDisplay{\displaystyle S_\text{m}}{T}{p} }{\incr \myPartialDisplay{\displaystyle V_\text{m}}{T}{p} }
+			=\frac{\incr \left( C_{\text{m},\,p} / T \right) }{\incr \left(V_\text{m} \a\right) }
+			=\frac{\displaystyle \incr C_{\text{m},\,p}}{T V_\text{m} \incr\a} \comma
+		\end{equation}
+		其中的 $\a$ 为膨胀系数，而 $V_\text{m}=V^\b_\text{m}=V^\g_\text{m}$。
+		
+		若是将式~\eqref{EQ_CLAUSIUS_CLAPEYRON_RELATION_BEFORE_EHRENFEST_EQUATION} 的分子分母同时对 $p$ 求偏导，则将得到
+		\begin{equation} \label{EQ_EHRENFEST_EQUATION_B}
+			\frac{\dd p}{\dd T}
+			=\frac{\incr \myPartialDisplay{\displaystyle S_\text{m}}{p}{T} }{\incr \myPartialDisplay{\displaystyle V_\text{m}}{p}{T} }
+			=\frac{-\incr \myPartialDisplay{\displaystyle V_\text{m}}{T}{p} }{\incr \myPartialDisplay{\displaystyle V_\text{m}}{p}{T} }
+			=\frac{-\incr \left(V_\text{m} \a \right) }{\incr \left(-V_\text{m} \k_T \right) }
+			=\frac{\a}{\incr\k_T} \comma
+		\end{equation}
+		其中的 $\k_T$ 为等温压缩系数。另外，这里的推导用到了Maxwell关系\eqref{EQ_MAXWELL_RELATION_FROM_G} 式。
+		
+		式~\eqref{EQ_EHRENFEST_EQUATION_A} 和 \eqref{EQ_EHRENFEST_EQUATION_B} 都称为\emphA{Ehrenfest方程}。要使其自洽，显然应该有
+		\begin{equation}
+			\frac{\displaystyle \incr C_{\text{m},\,p}}{T V_\text{m} \incr\a}
+			=\frac{\a}{\incr\k_T} \comma
+		\end{equation}
+		即
+		\begin{equation}
+			\incr C_{\text{m},\,p} = T V_\text{m} \frac{\left(\incr\a\right)^2}{\incr\k_T} \fullstop
+		\end{equation}
 \section{气液相变；临界点行为}
 \section{临界指数；普适性}
 \section{Landau平均场理论}
