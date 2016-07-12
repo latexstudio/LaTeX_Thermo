@@ -1,6 +1,6 @@
 if(!settings.multipleView) settings.batchView=false;
 settings.tex="xelatex";
-defaultfilename="Notes-1";
+defaultfilename="Notes-4";
 if(settings.render < 0) settings.render=4;
 settings.outformat="";
 settings.inlineimage=true;
@@ -37,22 +37,22 @@ pen color6 = rgb(0.772079, 0.431554, 0.102387);
 pen color7 = rgb(0.363898, 0.618501, 0.782349);
 pen color8 = rgb(0.972829, 0.621644, 0.073362);
 
-pair O = (0, 0), x_axes = (10, 0), y_axes = (0, 10);
+pair O = (0, 0), x_axes = (8, 0), y_axes = (0, 5);
 
-pair p1 = (2.2, 7.5), p2 = (8, 2.5), p3 = (4, 4.5);
-pair p1_x = (p1.x, 0), p2_x = (p2.x, 0);
+real a = 5.5, b = 3;
 
-fill(p1_x--p1..p3..p2--p2_x--cycle, color1 + opacity(0.2));
+pair p1 = (0.4, 1.8), p2 = (5, 3.8);
+pair p3 = (2, -0.4), p4 = (6, -3);
 
-draw(Label("$V$", EndPoint), O--x_axes, Arrow);
-draw(Label("$p$", EndPoint), O--y_axes, Arrow);
+draw(Label("$x$", EndPoint), (-x_axes)--x_axes, Arrow);
+draw(Label("$p_x$", EndPoint), (0, -4.2)--y_axes, Arrow);
 
-draw(p1..p3..p2, linewidth(1) + color1);
-draw(p1_x--p1, dashed + color1);
-draw(p2_x--p2, dashed + color1);
+draw(ellipse(O, a, b), linewidth(1) + color1);
+
+draw(O--(a, 0), linewidth(1.2));
+draw(O--(0, b), linewidth(1.2));
+
+draw(Label("$\sqrt{2mE}$", EndPoint), p1--p2);
+draw(Label("$\sqrt{\dfrac{\displaystyle 2E}{\displaystyle m\omega^2}}$", EndPoint), p3--p4);
 
 label("$O$", O, SW);
-label("状态 $1$", p1, (0, 2));
-label("状态 $2$", p2, (0.5, 2));
-label("$V_1$", p1_x, S);
-label("$V_2$", p2_x, S);

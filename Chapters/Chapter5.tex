@@ -50,11 +50,108 @@
 			\begin{equation}
 				S_\text{椭圆} = \p \, a b = \p \cdot \sqrt{\frac{2E}{m \o^2}} \cdot \sqrt{2mE} = \frac{2 \p E}{\o} \fullstop
 			\end{equation}
-			%TODO：20160504 示意图
+			
+			\begin{figure}[ht]
+				\centering
+				
+				\begin{asy}
+					pair O = (0, 0), x_axes = (8, 0), y_axes = (0, 5);
+					
+					real a = 5.5, b = 3;
+					
+					pair p1 = (0.4, 1.8), p2 = (5, 3.8);
+					pair p3 = (2, -0.4), p4 = (6, -3);
+					
+					draw(Label("$x$", EndPoint), (-x_axes)--x_axes, Arrow);
+					draw(Label("$p_x$", EndPoint), (0, -4.2)--y_axes, Arrow);
+					
+					draw(ellipse(O, a, b), linewidth(1) + color1);
+					
+					draw(O--(a, 0), linewidth(1.2));
+					draw(O--(0, b), linewidth(1.2));
+					
+					draw(Label("$\sqrt{2mE}$", EndPoint), p1--p2);
+					draw(Label("$\sqrt{\dfrac{\displaystyle 2E}{\displaystyle m\omega^2}}$", EndPoint), p3--p4);
+					
+					label("$O$", O, SW);
+				\end{asy}
+				\caption{$\m$ 空间中的一维谐振子}
+				\label{FIG_1D_HARMONIC_OSCILLATOR_IN_MU_SPACE}
+			\end{figure}
 		\end{myExample}
 		
 		\begin{myExample}[转子]
-			%TODO：20160624 未完成
+			如图~\ref{FIG_ROTATOR} 所示，质量为 $m$ 的物体被轻杆连接在 $O$ 点处，可绕 $O$ 点运动。其Hamilton量为
+			\begin{equation} \label{EQ_ROTATOR_HAMILTONIAN_1}
+				H = \frac{m}{2} \left( \dot{x}^2 + \dot{y}^2 + \dot{z}^2 \right) \fullstop
+			\end{equation}
+			取球坐标系，则
+			\begin{braceEq}
+				x &= r \sin \th \cos \comma \\
+				y &= r \sin \th \sin \vf \comma \\
+				z &= r \cos \th \fullstop
+			\end{braceEq}
+			求导，则有
+			\begin{braceEq}
+				\dot{x} &= \dot{r} \sin\th \cos\vf + r \dot{\th} \cos\th \cos\vf - r \dot{\vf} \sin\th \sin\vf \\
+				\dot{y} &= \dot{r} \sin\th \sin\vf + r \dot{\th} \cos\th \sin\vf + r \dot{\vf} \sin\th \cos\vf \\
+				\dot{z} &= \dot{r} \cos\th - r \dot{\th} \sin\th \fullstop
+			\end{braceEq}
+			因此
+			\begin{align}
+				\dot{x}^2 + \dot{y}^2 + \dot{z}^2
+				&= \left[ \dot{r}^2\sin^2\th + \left(r\dot{\th}\right)^2\cos^2\th + \left(r\dot{\vf}\right)^2\sin^2\th \right] \myTag{$\dot{x}^2$、$\dot{y}^2$ 平方项} \\
+				&+ \left[ 2r\dot{r}\dot{\th}\sin\th\cos\th\cos^2\vf - 2r\dot{r}\dot{\vf}\sin^2\th\sin\vf\cos\vf - 2r^2\dot{\th}\dot{\vf}\sin\th\cos\th\sin\vf\cos\vf \right] \myTag{$\dot{x}^2$ 交叉项} \\
+				&+ \left[ 2r\dot{r}\dot{\th}\sin\th\cos\th\sin^2\vf + 2r\dot{r}\dot{\vf}\sin^2\th\sin\vf\cos\vf + 2r^2\dot{\th}\dot{\vf}\sin\th\cos\th\sin\vf\cos\vf \right] \myTag{$\dot{y}^2$ 交叉项} \\
+				&+ \left[ \dot{r}^2\cos^2\th - 2r\dot{r}\dot{\th}\sin\th\cos\th + \left(r\dot{\th}\right)^2\sin^2\th \right] \myTag{$\dot{z}^2$} \\
+				&= \dot{r}^2 + \left(r\dot{\th}\right)^2 + \left(r\dot{\vf}\right)^2\sin^2\th \fullstop
+			\end{align}
+			代入 \eqref{EQ_ROTATOR_HAMILTONIAN_1}~式，得
+			\begin{align}
+				H &= \frac{m}{2} \left( \dot{r}^2 + r^2\dot{\th}^2 + r^2\dot{\vf}^2\sin^2\th \fullstop \right)
+			\end{align}
+			由于物体已被轻杆连接在了 $O$ 点，因而 $r$ 不变，$\dot{r}=0$。
+			
+			\begin{figure}[h]
+				\begin{asy}
+					import my3D;
+					
+					triple O = (0, 0, 0), x_axes = (3.5, 0, 0), y_axes = (0, 5, 0), z_axes = (0, 0, 5);
+					triple point_m = (2.5, 5, 6), point_n = (point_m.x, point_m.y, 0);
+					
+					pair O2 = project(O), point_m2 = project(point_m), point_n2 = project(point_n);
+					
+					draw(Label("$x$", EndPoint), O2--project(x_axes), Arrow);
+					draw(Label("$y$", EndPoint), O2--project(y_axes), Arrow);
+					draw(Label("$z$", EndPoint), O2--project(z_axes), Arrow);
+					
+					draw(Label("$\bm{r}$", MidPoint, black), O2--point_m2, linewidth(1.5) + color2);
+					draw(O2--point_n2--point_m2, dashed + color1);
+					fill(circle(point_m2, 0.2), color1);
+					
+					real angle_r = 0.7;
+					draw(Label("$\varphi$", MidPoint, Relative(E)), angleMark(O, x_axes, point_n, angle_r));
+					draw(Label("$\theta$", MidPoint, Relative((-1,-0.4))), angleMark(O, z_axes, point_m, angle_r));
+					
+					label("$O$", O2, (-1.5, 0.5));
+					label("$m$", point_m2, (2, 0.5));
+				\end{asy}
+				\caption{转子的示意图}
+				\label{FIG_ROTATOR}
+			\end{figure}
+
+			引入\emphA{共轭动量}
+			\begin{braceEq}
+				p_\th &= m r^2 \dot{\th} \comma \\
+				p_\vf &= m r^2 \dot{\vf} \sin^2 \th \comma
+			\end{braceEq}
+			则系统的Hamilton量可写为
+			\begin{equation}
+				H = \frac{1}{2I} \left( p_\th^2 + \frac{1}{\sin^2 \th} p_\vf^2 \right) \comma
+			\end{equation}
+			其中的 $I = m r^2$ 是物体对 $O$ 点的\emphA{转动惯量}。
+			
+			在本例中，$\mu$ 空间由广义坐标和广义动量 $(\th, \, \vf; \, p_\th, \, p_\vf)$ 张成，它是四维的。
 		\end{myExample}
 		
 	\subsection{单粒子的量子描述}
@@ -118,11 +215,11 @@
 		\end{myExample}
 		
 		\begin{myExample}[一维谐振子]
-			
+			aaaaa
 		\end{myExample}
 		
 		\begin{myExample}[转子]
-			
+			blablabla
 		\end{myExample}%TODO：20160624 未完成
 		
 	\subsection{多粒子体系的描述}

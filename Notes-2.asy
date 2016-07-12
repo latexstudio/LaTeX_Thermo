@@ -23,9 +23,6 @@ group-digits = integer,
 group-minimum-digits = 4,
 group-separator = \text{~}
 }");
-texpreamble("\input{Symbols.tex}");
-texpreamble("\newcommand{\emphA}[1]{{\myHeavy #1}}");
-texpreamble("\newcommand{\emphB}[1]{{\itshape #1}}");
 
 size(6 cm);
 

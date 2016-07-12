@@ -102,18 +102,6 @@
 	\setCJKfamilyfont{楷体}[BoldFont = 方正楷体_GBK, ItalicFont = 方正楷体_GBK, Mapping = fullwidth-stop]{方正楷体_GBK}
 	\setCJKfamilyfont{仿宋}[BoldFont = 方正仿宋_GBK, ItalicFont = 方正仿宋_GBK, Mapping = fullwidth-stop]{方正仿宋_GBK}
 	\setCJKfamilyfont{黑体}[BoldFont = 方正黑体_GBK, ItalicFont = 方正黑体_GBK, Mapping = fullwidth-stop]{方正黑体_GBK}
-%	\setCJKmainfont[BoldFont = 华文中宋, ItalicFont = 华文楷体, Mapping = fullwidth-stop]{宋体}
-%	\setCJKmainfont[BoldFont = 华文中宋, ItalicFont = 华文楷体, Mapping = fullwidth-stop]{华文宋体}
-%	\setCJKmainfont[BoldFont = FandolSong-Bold, ItalicFont = FandolKai-Regular, Mapping = fullwidth-stop]{FandolSong-Regular}
-%	\setCJKfamilyfont{fs1}{FandolSong-Regular.otf}
-%	\setCJKfamilyfont{fs2}{FandolSong-Bold.otf}
-%	\setCJKfamilyfont{中宋}[BoldFont = 华文中宋, ItalicFont = 华文中宋, Mapping = fullwidth-stop]{华文中宋}
-%	\setCJKfamilyfont{楷体}[BoldFont = 华文楷体, ItalicFont = 华文楷体, Mapping = fullwidth-stop]{华文楷体}
-%	\setCJKfamilyfont{仿宋}[BoldFont = 华文仿宋, ItalicFont = 华文仿宋, Mapping = fullwidth-stop]{华文仿宋}
-%	\setCJKfamilyfont{黑体}[BoldFont = 黑体, ItalicFont = 黑体, Mapping = fullwidth-stop]{黑体}
-%	\setCJKfamilyfont{黑体}[BoldFont = 华文黑体, ItalicFont = 华文黑体, Mapping = fullwidth-stop]{华文黑体}
-%	\setCJKfamilyfont{黑体}[BoldFont = FandolHei-Regular, ItalicFont = FandolHei-Regular, Mapping = fullwidth-stop]{FandolHei-Regular}
-%	\setCJKfamilyfont{黑体}[BoldFont = 思源黑体 CN Regular, ItalicFont = 思源黑体 CN Regular, Mapping = fullwidth-stop]{思源黑体 CN Regular}
 	\newcommand{\myHeavy}{\sffamily \CJKfamily{黑体}}
 %\usepackage[UTF8, heading = true]{ctex}
 	\pagestyle{fancy}
@@ -200,9 +188,6 @@
 				group-minimum-digits = 4,
 				group-separator = \text{~}
 			}");
-		texpreamble("\input{Symbols.tex}");
-		texpreamble("\newcommand{\emphA}[1]{{\myHeavy #1}}");
-		texpreamble("\newcommand{\emphB}[1]{{\itshape #1}}");
 		
 		size(6 cm);
 		
