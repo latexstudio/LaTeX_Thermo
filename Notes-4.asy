@@ -45,7 +45,7 @@ pair p1 = (0.4, 1.8), p2 = (5, 3.8);
 pair p3 = (2, -0.4), p4 = (6, -3);
 
 draw(Label("$x$", EndPoint), (-x_axes)--x_axes, Arrow);
-draw(Label("$p_x$", EndPoint), (0, -4.2)--y_axes, Arrow);
+draw(Label("$p$", EndPoint), (0, -4.2)--y_axes, Arrow);
 
 draw(ellipse(O, a, b), linewidth(1) + color1);
 

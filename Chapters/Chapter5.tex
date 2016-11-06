@@ -47,7 +47,7 @@
 				\frac{p^2}{2mE} + \frac{x^2}{2E / m \o^2} = 1 \comma
 			\end{equation}
 			这在 $\m$ 空间中表示一个椭圆（见图），其面积
-			\begin{equation}
+			\begin{equation} \label{EQ_ELLIPSE_OF_HARMONIC_OSCILLATOR_IN_MU_SPACE}
 				S_\text{椭圆} = \p \, a b = \p \cdot \sqrt{\frac{2E}{m \o^2}} \cdot \sqrt{2mE} = \frac{2 \p E}{\o} \fullstop
 			\end{equation}
 			
@@ -63,7 +63,7 @@
 					pair p3 = (2, -0.4), p4 = (6, -3);
 					
 					draw(Label("$x$", EndPoint), (-x_axes)--x_axes, Arrow);
-					draw(Label("$p_x$", EndPoint), (0, -4.2)--y_axes, Arrow);
+					draw(Label("$p$", EndPoint), (0, -4.2)--y_axes, Arrow);
 					
 					draw(ellipse(O, a, b), linewidth(1) + color1);
 					
@@ -112,7 +112,7 @@
 			\end{align}
 			由于物体已被轻杆连接在了 $O$ 点，因而 $r$ 不变，$\dot{r}=0$。
 			
-			\begin{figure}[h]
+			\begin{figure}[ht]
 				\begin{asy}
 					import my3D;
 					
@@ -215,7 +215,17 @@
 		\end{myExample}
 		
 		\begin{myExample}[一维谐振子]
-			aaaaa
+			频率为 $\nu$ 的谐振子，其能量为
+			\begin{equation}
+				E_n = \left( n + \frac{1}{2} \right) h \nu \comma \quad n = 0, \, 1, \, 2, \, \cdots \fullstop
+			\end{equation}
+			可见该系统的简并度 $g = 1$。
+			
+			根据式~\eqref{EQ_ELLIPSE_OF_HARMONIC_OSCILLATOR_IN_MU_SPACE}，$\mu$ 空间中的椭圆面积为
+			\begin{equation}
+				S_n = \frac{2\pi E_n}{\o} =\frac{E_n}{\nu} = \left( n + \frac{1}{2} \right) h\fullstop
+			\end{equation}
+			因此两个相轨道之间的面积为 $h$，它对应一个量子态。
 		\end{myExample}
 		
 		\begin{myExample}[转子]
